@@ -8,24 +8,24 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-   <!-- Sidebar example -->
-<div class="sidebar">
-    <h2>Farm Management</h2>
-    <ul>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="farm-overview.html">Farm Overview</a></li>
-        <li><a href="crop-management.html">Crop Management</a></li>
-        <li><a href="livestock-management.html">Livestock Management</a></li>
-        <li><a href="inventory.html">Inventory</a></li>
-        <li><a href="reports.html">Reports</a></li>
-        <li><a href="settings.html">Settings</a></li>
-    </ul>
-</div>
+    <!-- Sidebar example -->
+    <div class="sidebar">
+        <h2>Farm Management</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="farm-overview.html">Farm Overview</a></li>
+            <li><a href="crop-management.html">Crop Management</a></li>
+            <li><a href="livestock-management.html">Livestock Management</a></li>
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
 
     <div class="main-content">
         <header>
-            <h1>Welcome, Admin</h1>
-            <button class="logout-btn">Logout</button>
+            <h1>Welcome</h1>
+            <button class="logout-btn" id="logout-btn">Logout</button>
         </header>
         <div class="overview">
             <div class="card">
@@ -52,6 +52,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Logout functionality
+        const logoutBtn = document.getElementById('logout-btn');
+
+        logoutBtn.addEventListener('click', () => {
+            // Call the logout function
+            logout();
+        });
+
+        function logout() {
+            // You can add your logout logic here
+            // For example, you can clear local storage or cookies
+            localStorage.clear();
+            // Redirect to the login page
+            window.location.href = 'login.html';
+        }
+    </script>
     <script src="dashboard.js"></script>
 </body>
 </html>

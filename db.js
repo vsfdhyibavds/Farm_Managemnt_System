@@ -1,17 +1,23 @@
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'farm_management'
+const dbConfig = {
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'farm_management'
+};
+
+const pool = mysql.createPool(dbConfig);
+
+// Test the connection
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error('Error connecting to database:', err);
+    return;
+  }
+  console.log('MySQL connected...');
+  connection.release();
 });
 
-db.connect(err => {
-    if (err) {
-        throw err;
-    }
-    console.log('MySQL connected...');
-});
-
-module.exports = db;
+// Export the pool
+module.exports = pool;
