@@ -1,104 +1,132 @@
-@media (max-width: 768px) {
-  table {
-      width: 100%;
-      font-size: 14px;
-  }
-  header h1, footer p {
-      font-size: 16px;
-      text-align: center;
-  }
-  button {
-      font-size: 14px;
-  }
-}
-
 /* Box model reset */
 * {
-    box-sizing: border-box;
-  }
-  
-  body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-image: url(https://c4.wallpaperflare.com/wallpaper/472/884/917/sky-nature-farm-field-wallpaper-preview.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat; 
-  }
-  
-  header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 0px; /* Added unit for padding value */
-    text-align: center;
-  }
-  
-  header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  header nav ul li {
-    margin: 0 15px;
-  }
-  
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/472/884/917/sky-nature-farm-field-wallpaper-preview.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+header nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header nav ul li button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+header nav ul li button:hover {
+  background-color: #45a049;
+}
+
+main {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
   table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+    font-size: 14px;
   }
-  
-  table, th, td {
-    border: 1px solid #ddd;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-  
-  button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  header nav ul li button:hover { /* Added selector for button hover state */
-    background-color: #45a049;
-  }
-  
-  footer {
-    background-color: #f1f1f1;
+  header h1, footer p {
+    font-size: 16px;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0; /* Added left property for full width */
-    right: 0; /* Added right property for full width */
+  }
+  button {
+    font-size: 14px;
+  }
+  header nav ul {
+    flex-direction: column;
+  }
+  header nav ul li {
+    margin: 10px 0;
+  }
+  #role {
     width: 100%;
+    padding: 12px;
+    font-size: 1.2em;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
   }
-  
-  /* Media query for responsiveness */
-  @media (max-width: 768px) {
-    header nav ul {
-      flex-direction: column;
-    }
-    header nav ul li {
-      margin: 10px 0;
-    }
+  #role {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg"><polygon points="70,100 10,40 130,40" style="fill:%23333;"/></svg>') no-repeat right 10px center;
+    background-size: 15px;
   }
+  #role option {
+    font-size: 1.1em;
+    padding: 10px;
+  }
+  #role:focus {
+    outline: 2px solid #007BFF;
+  }
+}

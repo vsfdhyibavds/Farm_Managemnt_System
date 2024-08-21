@@ -1,46 +1,73 @@
-// Define the roles array
-const roles = [
-  { id: 1, name: 'Admin' },
-  { id: 2, name: 'Manager' },
-  { id: 3, name: 'User' }
-];
+// Initialize users array from local storage
+const users = JSON.parse(localStorage.getItem('users')) || [];
 
-// Function to display the roles in the role input field
-function displayRoles() {
-  const roleInput = document.getElementById('role');
-  const roleOptions = roles.map(role => {
-    return `<option value="${role.name}">${role.name}</option>`;
+// DOM elements
+const addUserForm = document.getElementById('add-user-form');
+const usersTableBody = document.getElementById('users-table-body');
+const userForm = document.getElementById('user-form');
+
+// Function to show add user form
+function showAddUserForm() {
+  addUserForm.style.display = 'block';
+}
+
+// Function to hide add user form
+function hideAddUserForm() {
+  addUserForm.style.display = 'none';
+}
+
+// Function to add user
+function addUser(event) {
+  event.preventDefault();
+
+  // Collect form data
+  const { username, role, email } = userForm.elements;
+
+  // Create a new user object
+  const newUser = {
+    id: users.length + 1,
+    username: username.value,
+    role: role.value,
+    email: email.value,
+  };
+
+  // Add new user to the users array and save it in local storage
+  users.push(newUser);
+  localStorage.setItem('users', JSON.stringify(users));
+
+  // Refresh the users table
+  populateUsersTable();
+
+  // Hide the form and reset fields
+  hideAddUserForm();
+  userForm.reset();
+}
+
+// Function to populate users table
+function populateUsersTable() {
+  usersTableBody.innerHTML = '';
+
+  users.forEach((user) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${user.id}</td>
+      <td>${user.username}</td>
+      <td>${user.role}</td>
+      <td>${user.email}</td>
+      <td>
+        <button onclick="deleteUser(${user.id})">Delete</button>
+      </td>
+    `;
+    usersTableBody.appendChild(row);
   });
-  roleInput.innerHTML = roleOptions.join('');
 }
 
-// Call the displayRoles function to populate the role input field
-displayRoles();
-
-// Function to add a new role
-function addRole() {
-  const newRoleName = prompt('Enter the new role name:');
-  if (newRoleName) {
-    const newRoleId = roles.length + 1;
-    roles.push({ id: newRoleId, name: newRoleName });
-    displayRoles();
-  }
+// Function to delete user
+function deleteUser(id) {
+  users = users.filter((user) => user.id !== id);
+  localStorage.setItem('users', JSON.stringify(users));
+  populateUsersTable();
 }
 
-// Function to delete a role
-function deleteRole() {
-  const roleId = prompt('Enter the ID of the role to delete:');
-  if (roleId) {
-    const roleIndex = roles.findIndex(role => role.id === parseInt(roleId));
-    if (roleIndex !== -1) {
-      roles.splice(roleIndex, 1);
-      displayRoles();
-    } else {
-      alert('Role not found!');
-    }
-  }
-}
-
-// Add event listeners to the add and delete role buttons
-document.getElementById('add-role-btn').addEventListener('click', addRole);
-document.getElementById('delete-role-btn').addEventListener('click', deleteRole);
+// Load users when the page is loaded
+document.addEventListener('DOMContentLoaded', populateUsersTable);
