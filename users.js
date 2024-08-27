@@ -1,72 +1,69 @@
 // Initialize users array from local storage
-const users = JSON.parse(localStorage.getItem('users')) || [];
+let users = JSON.parse(localStorage.getItem('users')) || [];
 
-// DOM elements
-const addUserForm = document.getElementById('add-user-form');
-const usersTableBody = document.getElementById('users-table-body');
-const userForm = document.getElementById('user-form');
-
-// Function to show add user form
 function showAddUserForm() {
-  addUserForm.style.display = 'block';
+    document.getElementById('add-user-form').style.display = 'block';
 }
 
-// Function to hide add user form
 function hideAddUserForm() {
-  addUserForm.style.display = 'none';
+    document.getElementById('add-user-form').style.display = 'none';
 }
 
-// Function to add user
 function addUser(event) {
-  event.preventDefault();
+    event.preventDefault(); // Prevent form submission
 
-  // Collect form data
-  const { username, role, email } = userForm.elements;
+    // Collect form data
+    const username = document.getElementById('username').value;
+    const role = document.getElementById('role').value;
+    const email = document.getElementById('email').value;
+    
 
-  // Create a new user object
-  const newUser = {
-    id: users.length + 1,
-    username: username.value,
-    role: role.value,
-    email: email.value,
-  };
+    // Create a new user object
+    const newUser = {
+        id: users.length + 1,
+        username,
+        role,
+        email
+    };
 
-  // Add new user to the users array and save it in local storage
-  users.push(newUser);
-  localStorage.setItem('users', JSON.stringify(users));
+    // Add new user to the users array and save it in local storage
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
 
-  // Refresh the users table
-  populateUsersTable();
+    // Refresh the users table
+    populateUsersTable();
 
-  // Hide the form and reset fields
-  hideAddUserForm();
-  userForm.reset();
+    // Hide the form and reset fields
+    hideAddUserForm();
+    document.getElementById('user-form').reset();
 }
 
-// Function to populate users table
 function populateUsersTable() {
-  usersTableBody.innerHTML = '';
+    const tableBody = document.getElementById('users-table-body');
+    tableBody.innerHTML = ''; // Clear the table
 
-  users.forEach((user) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${user.id}</td>
-      <td>${user.username}</td>
-      <td>${user.role}</td>
-      <td>${user.email}</td>
-      <td>
-        <button onclick="deleteUser(${user.id})">Delete</button>
-      </td>
-    `;
-    usersTableBody.appendChild(row);
-  });
+    users.forEach((user) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${user.id}</td>
+            <td>${user.username}</td>
+            <td>${user.role}</td>
+            <td>${user.email}</td>
+            <td>
+                <button onclick="deleteUser(${user.id})">Delete</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
 }
 
-// Function to delete user
 function deleteUser(id) {
-  users = users.filter((user) => user.id !== id);
-  localStorage.setItem('users', JSON.stringify(users));
-  populateUsersTable();
+    // Remove user from array and update local storage
+    users = users.filter(user => user.id !== id);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Refresh the table
+    populateUsersTable();
 }
 
 // Load users when the page is loaded
