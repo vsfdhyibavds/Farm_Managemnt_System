@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Management System - Reports</title>
+    <link rel="stylesheet" href="/CSS Files/Reports.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Farm Management</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="farm-overview.html">Farm Overview</a></li>
+            <li><a href="crop-management.html">Crop Management</a></li>
+            <li><a href="livestock-management.html">Livestock Management</a></li>
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="#" class="active">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Reports</h1>
+        </header>
+        <div class="content">
+            <h2>Generate Reports</h2>
+            <form id="reportForm">
+                <label for="reportType">Report Type:</label>
+                <select id="reportType" name="reportType" required>
+                    <option value="">Select a report type</option>
+                    <option value="crop">Crop Report</option>
+                    <option value="livestock">Livestock Report</option>
+                    <option value="inventory">Inventory Report</option>
+                </select>
+                <br>
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" required>
+                <br>
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate" required>
+                <br>
+                <button type="submit">Generate Report</button>
+            </form>
+            <div id="reportResult">
+                <!-- The generated report will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <script src="/JS Files/Reports.js"></script>
+</body>
+</html>

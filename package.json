@@ -1,19 +1,21 @@
 {
   "name": "farm_management_system",
   "version": "1.0.0",
-  "main": "crop-management.js",
+  "description": "settingup local server",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Eugene",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "mysql": "^2.18.1"
+    "express": "^4.21.0",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }

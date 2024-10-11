@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Management System Dashboard</title>
+    <link rel="stylesheet" href="/CSS Files/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Sidebar example -->
+    <div class="sidebar">
+        <h2>Farm Management</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="farm-overview.html">Farm Overview</a></li>
+            <li><a href="crop-management.html">Crop Management</a></li>
+            <li><a href="livestock-management.html">Livestock Management</a></li>
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Welcome</h1>
+            <button class="logout-btn" id="logout-btn">Logout</button>
+        </header>
+        <div class="overview">
+            <div class="card">
+                <h3>Total Crops</h3>
+                <p>120</p>
+            </div>
+            <div class="card">
+                <h3>Total Livestock</h3>
+                <p>90</p>
+            </div>
+            <div class="card">
+                <h3>Inventory Items</h3>
+                <p>200</p>
+            </div>
+        </div>
+        <div class="charts">
+            <div class="chart">
+                <h3>Crop Yield Over Time</h3>
+                <canvas id="cropYieldChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Livestock Growth</h3>
+                <canvas id="livestockGrowthChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logout functionality
+        const logoutBtn = document.getElementById('logout-btn');
+
+        logoutBtn.addEventListener('click', () => {
+            // Call the logout function
+            logout();
+        });
+
+        function logout() {
+            // You can add your logout logic here
+            // For example, you can clear local storage or cookies
+            localStorage.clear();
+            // Redirect to the login page
+            window.location.href = 'login.html';
+        }
+    </script>
+    <script src="/JS Files/dashboard.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Management System - Inventory Management</title>
+    <link rel="stylesheet" href="/CSS Files/inventory.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Farm Management</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="farm-overview.html">Farm Overview</a></li>
+            <li><a href="crop-management.html">Crop Management</a></li>
+            <li><a href="livestock-management.html">Livestock Management</a></li>
+            <li><a href="#" class="active">Inventory</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Inventory Management</h1>
+        </header>
+        <div class="content">
+            <button class="add-item-btn" onclick="showAddItemForm()">Add New Item</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item ID</th>
+                        <th>Item Name</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="inventoryTableBody">
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="addItemForm" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="hideAddItemForm()">&times;</span>
+                <h2>Add New Item</h2>
+                <form onsubmit="addItem(event)">
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" id="itemName" name="itemName" required>
+                    <br>
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" required>
+                    <br>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" required>
+                    <br>
+                    <label for="unitPrice">Unit Price:</label>
+                    <input type="number" step="0.01" id="unitPrice" name="unitPrice" required>
+                    <br>
+                    <button type="submit">Add Item</button>
+                    <button type="button" onclick="hideAddItemForm()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/JS Files/inventory.js"></script>
+</body>
+</html>

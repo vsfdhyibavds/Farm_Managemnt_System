@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops Management</title>
+    <link rel="stylesheet" href="/CSS Files/crops.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Farm Management System - Crops</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="fields.html">Fields</a></li>
+                <li><a href="crops.html">Crops</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Crops List</h2>
+            <button onclick="showAddCropForm()">Add Crop</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Crop Name</th>
+                        <th>Field</th>
+                        <th>Plant Date</th>
+                        <th>Harvest Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="cropsTableBody">
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="addCropForm" style="display: none;">
+            <h2>Add New Crop</h2>
+            <form onsubmit="addCrop(event)">
+                <label for="cropName">Crop Name:</label>
+                <input type="text" id="cropName" name="cropName" required>
+                <br>
+                <label for="field">Field:</label>
+                <input type="text" id="field" name="field" required>
+                <br>
+                <label for="plantDate">Plant Date:</label>
+                <input type="date" id="plantDate" name="plantDate" required>
+                <br>
+                <label for="harvestDate">Harvest Date:</label>
+                <input type="date" id="harvestDate" name="harvestDate" required>
+                <br>
+                <button type="submit">Add Crop</button>
+                <button type="button" onclick="hideAddCropForm()">Cancel</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Farm Management System</p>
+    </footer>
+
+    <script src="/JS Files/crops.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Management System - Crop Management</title>
+    <link rel="stylesheet" href="/CSS Files/crop-management.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Farm Management</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="farm-overview.html">Farm Overview</a></li>
+            <li><a href="#" class="active">Crop Management</a></li>
+            <li><a href="livestock-management.html">Livestock Management</a></li>
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="/CSS Files/crop-management.css
+                ">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Crop Management</h1>
+        </header>
+        <div class="content">
+            <div class="crop-list">
+                <h2>Current Crops</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Crop Name</th>
+                            <th>Variety</th>
+                            <th>Area (acres)</th>
+                            <th>Planting Date</th>
+                            <th>Harvest Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cropTableBody">
+                        <tr>
+                            <td>1</td>
+                            <td>Wheat</td>
+                            <td>Durum</td>
+                            <td>50</td>
+                            <td>2024-03-01</td>
+                            <td>2024-08-15</td>
+                            <td><button onclick="editCrop(1)">Edit</button> <button onclick="deleteCrop(1)">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Corn</td>
+                            <td>Dent</td>
+                            <td>75</td>
+                            <td>2024-04-15</td>
+                            <td>2024-09-30</td>
+                            <td><button onclick="editCrop(2)">Edit</button> <button onclick="deleteCrop(2)">Delete</button></td>
+                        </tr>
+                        <!-- Additional crop rows can go here -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="charts">
+                <div class="chart">
+                    <h3>Crop Yield Comparison</h3>
+                    <canvas id="cropYieldChart"></canvas>
+                </div>
+                <div class="chart">
+                    <h3>Water Usage per Crop</h3>
+                    <canvas id="waterUsageChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Crop Modal -->
+    <div id="editCropModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Edit Crop</h2>
+            <form id="editCropForm">
+                <input type="hidden" id="edit-crop-id">
+                <div class="group">
+                    <label for="edit-crop-name" class="label">Crop Name</label>
+                    <input id="edit-crop-name" type="text" class="input">
+                </div>
+                <div class="group">
+                    <label for="edit-crop-variety" class="label">Variety</label>
+                    <input id="edit-crop-variety" type="text" class="input">
+                </div>
+                <div class="group">
+                    <label for="edit-crop-area" class="label">Area (acres)</label>
+                    <input id="edit-crop-area" type="number" class="input">
+                </div>
+                <div class="group">
+                    <label for="edit-planting-date" class="label">Planting Date</label>
+                    <input id="edit-planting-date" type="date" class="input">
+                </div>
+                <div class="group">
+                    <label for="edit-harvest-date" class="label">Harvest Date</label>
+                    <input id="edit-harvest-date" type="date" class="input">
+                </div>
+                <div class="group">
+                    <input type="submit" class="button" value="Save Changes">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/JS Files/crop-management.js"></script>
+</body>
+</html>

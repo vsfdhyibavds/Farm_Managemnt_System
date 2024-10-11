@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/CSS Files/login.css" />
+  <title>Farm Management System</title>
+</head>
+<body>
+  <div class="farm-wrap">
+    <div class="farm-html">
+      <input id="tab-1" type="radio" name="tab" class="farm-login" checked>
+      <label for="tab-1" class="tab">Farm Login</label>
+      <input id="tab-2" type="radio" name="tab" class="farm-register">
+      <label for="tab-2" class="tab">Register Farm</label>
+      <div class="farm-form">
+        <div class="farm-login-htm">
+          <div class="group">
+            <label for="farm-id" class="label">Farm ID</label>
+            <input id="farm-id" type="text" class="input" required>
+          </div>
+          <div class="group">
+            <label for="password" class="label">Password</label>
+            <input id="password" type="password" class="input" data-type="password" required>
+          </div>
+          <div class="group">
+            <input id="remember" type="checkbox" class="check" checked>
+            <label for="remember"><span class="icon"></span> Remember Me</label>
+          </div>
+          <div class="group">
+            <input type="submit" class="button" value="Login" onclick="login()">
+          </div>
+          <div class="hr"></div>
+          <div class="foot-lnk">
+            <a href="#forgot">Forgot Password?</a>
+          </div>
+        </div>
+        <div class="farm-register-htm">
+          <div class="group">
+            <label for="farm-name" class="label">Farm Name</label>
+            <input id="farm-name" type="text" class="input" required>
+          </div>
+          <div class="group">
+            <label for="farm-email" class="label">Farm Email</label>
+            <input id="farm-email" type="email" class="input" required>
+          </div>
+          <div class="group">
+            <label for="farm-password" class="label">Password</label>
+            <input id="farm-password" type="password" class="input" data-type="password" required>
+          </div>
+          <div class="group">
+            <label for="farm-repeat-password" class="label">Repeat Password</label>
+            <input id="farm-repeat-password" type="password" class="input" data-type="password" required>
+          </div>
+          <div class="group">
+            <input type="submit" class="button" value="Register" onclick="register()">
+          </div>
+          <div class="hr"></div>
+          <div class="foot-lnk">
+            <label for="tab-1">Already a Member?</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/JS Files/login.js"></script>
+</body>
+</html>

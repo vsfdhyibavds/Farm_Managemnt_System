@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Management System - Farm Overview</title>
+    <link rel="stylesheet" href="/CSS Files/farm-overview.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Farm Management</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="#" class="active">Farm Overview</a></li>
+            <li><a href="crop-management.html">Crop Management</a></li>
+            <li><a href="livestock-management.html">Livestock Management</a></li>
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Farm Overview</h1>
+        </header>
+        <div class="overview">
+            <div class="overview-card">
+                <h3>Farm Name</h3>
+                <p>Green Valley Farm</p>
+            </div>
+            <div class="overview-card">
+                <h3>Location</h3>
+                <p>California, USA</p>
+            </div>
+            <div class="overview-card">
+                <h3>Total Area</h3>
+                <p>500 acres</p>
+            </div>
+            <div class="overview-card">
+                <h3>Owner</h3>
+                <p>John Doe</p>
+            </div>
+        </div>
+        <div class="charts">
+            <div class="chart">
+                <h3>Farm Activity Distribution</h3>
+                <canvas id="activityDistributionChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Annual Revenue</h3>
+                <canvas id="annualRevenueChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="/JS Files/farm-overview.js"></script>
+</body>
+</html>
