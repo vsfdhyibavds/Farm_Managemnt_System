@@ -1,24 +1,24 @@
-// Sample data for demonstration purposes
+// Sample initial user data
 let users = [
-    { id: 1, name: 'Eugene', Role: 'Manger', Email: 'eugenco578@gmail.com' },
-    { id: 2, name: 'East Field', Role: '', Email: '', location: 'East', size: 75 }
+    { id: 1, username: 'Eugene', role: 'Manager', email: 'eugenco578@gmail.com' },
+    { id: 2, username: 'Frank', role: 'Farmer', email: 'frank@gmail.com' }
 ];
 
 // Function to display the list of users
-function displayusers() {
-    const usersTableBody = document.getElementById('usersTableBody');
+function displayUsers() {
+    const usersTableBody = document.getElementById('users-table-body');
     usersTableBody.innerHTML = '';
 
     users.forEach(user => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td data-label="ID">${user.id}</td>
-            <td data-label="User Name">${user.name}</td>
-            <td data-label="Role">${user.Role}</td>
-            <td data-label="Email">${user.Email}</td>
-            <td data-label="Actions">
-                <button class="actions-button" onclick="editUser(${user.id})">Edit</button>
-                <button class="actions-button" onclick="deleteUser(${user.id})">Delete</button>
+            <td>${user.id}</td>
+            <td>${user.username}</td>
+            <td>${user.role}</td>
+            <td>${user.email}</td>
+            <td>
+                <button onclick="editUser(${user.id})">Edit</button>
+                <button onclick="deleteUser(${user.id})">Delete</button>
             </td>
         `;
         usersTableBody.appendChild(row);
@@ -26,36 +26,36 @@ function displayusers() {
 }
 
 // Function to show the add user form
-function showAdduserForm() {
-    document.getElementById('adduserForm').style.display = 'flex';
+function showAddUserForm() {
+    document.getElementById('add-user-form').style.display = 'block';
 }
 
 // Function to hide the add user form
-function hideAdduserForm() {
-    document.getElementById('adduserForm').style.display = 'none';
+function hideAddUserForm() {
+    document.getElementById('add-user-form').style.display = 'none';
 }
 
 // Function to add a new user
-function adduser(event) {
+function addUser(event) {
     event.preventDefault();
-    const userName = document.getElementById('userName').value;
-    const Role = document.getElementById('Role').value;
-    const Email = document.getElementById('Email').value;
+    const username = document.getElementById('username').value;
+    const role = document.getElementById('role').value;
+    const email = document.getElementById('email').value;
 
-    const newuser = {
-        id: users.length + 1,
-        name: userName,
-        Role: Role,
-        Email: Email
+    const newUser = {
+        id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
+        username: username,
+        role: role,
+        email: email
     };
 
-    users.push(newuser);
-    displayusers();
-    hideAdduserForm();
+    users.push(newUser);
+    displayUsers();
+    hideAddUserForm();
     event.target.reset();
 }
 
-// Function to edit a user
+// Function to edit a user (placeholder)
 function editUser(id) {
     alert(`Edit user with ID: ${id}`);
     // Implement edit functionality if needed
@@ -64,8 +64,11 @@ function editUser(id) {
 // Function to delete a user
 function deleteUser(id) {
     users = users.filter(user => user.id !== id);
-    displayusers();
+    displayUsers();
 }
 
-// Initial display of users
-displayusers();
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    displayUsers();
+    document.getElementById('add-user-form').addEventListener('submit', addUser);
+});
