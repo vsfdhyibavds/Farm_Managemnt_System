@@ -1,15 +1,16 @@
-// database.js
+// dbConnection.js
 
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 /**
  * Database connection settings
  */
 const connection = mysql.createConnection({
-    host: 'localhost 3306',
-    user: 'root',
-    password: '',
-    database: 'farm_management_system'
+    host: 'localhost', // or your MySQL server address
+    port: 3306,        // default MySQL port
+    user: 'your_username', // replace with your MySQL username
+    password: 'your_password', // replace with your MySQL password
+    database: 'your_database' // replace with your database name
 });
 
 /**
@@ -36,4 +37,5 @@ function closeDatabaseConnection() {
     });
 }
 
+// Export the connection and close function for use in other modules
 module.exports = { connection, closeDatabaseConnection };
